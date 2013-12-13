@@ -28,13 +28,4 @@ describe('Passing the ping level:', function() {
         });
     });
 
-    it('answsers the first decoposition of  powers 2', function(done) {
-        request('http://localhost:7000/primeFactors?number=16', function(error, response, body) {
-            expect(body).toEqual( JSON.stringify( {
-                "number": 16,
-                "decomposition": [ 2, 2, 2, 2]
-            } ) );
-            done();
-        });
-    });
 });

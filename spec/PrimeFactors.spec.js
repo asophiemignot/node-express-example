@@ -26,4 +26,19 @@ describe('Passing PrimeFactors levels:', function() {
             done();
         });
     });
+
+    it('answsers parseint', function() {
+        expect(isNaN("hello")).toEqual(true);
+    });
+
+    it('answsers the guard challenge', function(done) {
+        request('http://localhost:7000/primeFactors?number=hello', function(error, response, body) {
+            expect(body).toEqual( JSON.stringify( {
+                "number": "hello",
+                "decomposition": "not a number"
+            } ) );
+            done();
+        });
+    });
+
 });
