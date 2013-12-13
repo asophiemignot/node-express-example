@@ -35,7 +35,7 @@ describe('Passing PrimeFactors levels:', function() {
         request('http://localhost:7000/primeFactors?number=hello', function(error, response, body) {
             expect(body).toEqual( JSON.stringify( {
                 "number": "hello",
-                "decomposition": "not a number"
+                "error": "not a number"
             } ) );
             done();
         });

@@ -8,7 +8,7 @@ module.exports = function(request, response) {
     {
         response.send({
             number: query.number,
-            decomposition: "not a number"
+            error: "not a number"
         });    }
     else
     {
