@@ -12,9 +12,17 @@ module.exports = function(request, response) {
         });
     };
 
-    var decomposition = [];
     var value = parseInt(query.number);
+    if (value>1000000)
+    {
+        response.send({
+            "number" : 1000001,
+            "error" : "too big number (>1e6)"
+        });
+    }
+
     var val=value;
+    var decomposition = [];
     var diviseur=2;
 
     while (diviseur<value)

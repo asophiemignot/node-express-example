@@ -71,4 +71,13 @@ describe('Passing PrimeFactors levels:', function() {
         });
     });
 
+    it('answsers the big number challenge', function(done) {
+        request('http://localhost:7000/primeFactors?number=1000001', function(error, response, body) {
+            expect(body).toEqual( JSON.stringify( {
+                "number": 1000001,
+                "error" : "too big number (>1e6)"
+            } ) );
+            done();
+        });
+    });
 });
