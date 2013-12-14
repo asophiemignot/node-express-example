@@ -27,7 +27,7 @@ describe('Passing PrimeFactors levels:', function() {
         });
     });
 
-    it('answsers the first decomposition of  powers 2', function(done) {
+    it('answsers the decomposition of 2', function(done) {
         request('http://localhost:7000/primeFactors?number=2', function(error, response, body) {
             expect(body).toEqual( JSON.stringify( {
                 "number": 2,
@@ -90,4 +90,27 @@ describe('Passing PrimeFactors levels:', function() {
             done();
         });
     });
+
+    it('answsers the multiple entries challenge', function(done) {
+        request('http://localhost:7000/primeFactors?number=300&number=120&number=hello', function(error, response, body) {
+            expect(body).toEqual( JSON.stringify(
+            [
+                {
+                    "number" : 300,
+                    "decomposition" : [ 2, 2, 3, 5, 5 ]
+                },
+                {
+                    "number" : 120,
+                    "decomposition" : [ 2, 2, 2, 3, 5 ]
+                },
+                {
+                    "number" : "hello",
+                    "error" : "not a number"
+                }
+            ]
+            ) );
+            done();
+        });
+    });
+
 });
