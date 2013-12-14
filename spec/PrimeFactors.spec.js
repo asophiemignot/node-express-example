@@ -17,7 +17,7 @@ describe('Passing PrimeFactors levels:', function() {
         testServer.close();
     });
 
-    it('answsers the first decoposition of  powers 2', function(done) {
+    it('answsers the first decomposition of  powers 2', function(done) {
         request('http://localhost:7000/primeFactors?number=16', function(error, response, body) {
             expect(body).toEqual( JSON.stringify( {
                 "number": 16,
@@ -36,6 +36,16 @@ describe('Passing PrimeFactors levels:', function() {
             expect(body).toEqual( JSON.stringify( {
                 "number": "hello",
                 "error": "not a number"
+            } ) );
+            done();
+        });
+    });
+
+    it('answsers the decomposition challenge', function(done) {
+        request('http://localhost:7000/primeFactors?number=300', function(error, response, body) {
+            expect(body).toEqual( JSON.stringify( {
+                "number": 300,
+                "decomposition": [ 2, 2, 3, 5, 5]
             } ) );
             done();
         });

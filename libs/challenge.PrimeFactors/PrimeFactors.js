@@ -9,20 +9,29 @@ module.exports = function(request, response) {
         response.send({
             number: query.number,
             error: "not a number"
-        });    }
-    else
-    {
-        var decomposition = [];
-        var value = parseInt(query.number);
-        var val=value;
-        while (val>=2)
-        {
-            decomposition.push (2);
-            val = val/2;
-        }
-        response.send({
-            number: value,
-            decomposition: decomposition
         });
     };
+
+    var decomposition = [];
+    var value = parseInt(query.number);
+    var val=value;
+    while ((val%2)==0)
+    {
+        decomposition.push (2);
+        val = val/2;
+    }
+    while ((val%3)==0)
+    {
+        decomposition.push (3);
+        val = val/3;
+    }    while ((val%5)==0)
+    {
+        decomposition.push (5);
+        val = val/5;
+    }
+    response.send({
+        number: value,
+        decomposition: decomposition
+    });
+
 };
