@@ -27,6 +27,16 @@ describe('Passing PrimeFactors levels:', function() {
         });
     });
 
+    it('answsers the first decomposition of  powers 2', function(done) {
+        request('http://localhost:7000/primeFactors?number=2', function(error, response, body) {
+            expect(body).toEqual( JSON.stringify( {
+                "number": 2,
+                "decomposition": [ 2]
+            } ) );
+            done();
+        });
+    });
+
     it('answsers parseint', function() {
         expect(isNaN("hello")).toEqual(true);
     });

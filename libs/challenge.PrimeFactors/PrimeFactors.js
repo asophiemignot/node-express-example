@@ -16,7 +16,7 @@ module.exports = function(request, response) {
     if (value>1000000)
     {
         response.send({
-            "number" : 1000001,
+            "number" : value,
             "error" : "too big number (>1e6)"
         });
     }
@@ -25,7 +25,7 @@ module.exports = function(request, response) {
     var decomposition = [];
     var diviseur=2;
 
-    while (diviseur<value)
+    while (diviseur<=value)
     {
         while ((val%diviseur)==0)
         {
