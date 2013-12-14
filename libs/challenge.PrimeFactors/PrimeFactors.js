@@ -15,20 +15,18 @@ module.exports = function(request, response) {
     var decomposition = [];
     var value = parseInt(query.number);
     var val=value;
-    while ((val%2)==0)
+    var diviseur=2;
+
+    while (diviseur<value)
     {
-        decomposition.push (2);
-        val = val/2;
+        while ((val%diviseur)==0)
+        {
+            decomposition.push (diviseur);
+            val = val/diviseur;
+        }
+        diviseur=diviseur+1;
     }
-    while ((val%3)==0)
-    {
-        decomposition.push (3);
-        val = val/3;
-    }    while ((val%5)==0)
-    {
-        decomposition.push (5);
-        val = val/5;
-    }
+
     response.send({
         number: value,
         decomposition: decomposition

@@ -51,4 +51,24 @@ describe('Passing PrimeFactors levels:', function() {
         });
     });
 
+    it('answsers the decomposition challenge', function(done) {
+        request('http://localhost:7000/primeFactors?number=6538', function(error, response, body) {
+            expect(body).toEqual( JSON.stringify( {
+                "number": 6538,
+                "decomposition": [ 2, 7, 467]
+            } ) );
+            done();
+        });
+    });
+
+    it('answsers the decomposition challenge', function(done) {
+        request('http://localhost:7000/primeFactors?number=4897', function(error, response, body) {
+            expect(body).toEqual( JSON.stringify( {
+                "number": 4897,
+                "decomposition": [ 59, 83]
+            } ) );
+            done();
+        });
+    });
+
 });
