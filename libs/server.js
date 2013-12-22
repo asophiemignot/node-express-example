@@ -16,8 +16,8 @@ server.get('/primeFactors/ui', function(request, response){
             '</head>' +
             '<body>' +
             '   <br id="invitation">Entrer un nombre à décomposer</br>' +
-            '   <br><input type="text" name="input#number"><br>' +
-            '   <br><input type="submit" value="button#go">' +
+            '   <br id="input#number"><input type="text" name="input#number"><br>' +
+            '   <br id="button#go"><input type="submit" value="button#go">' +
             '</body>' +
         '</html>');
 });
